@@ -15,7 +15,10 @@ fi
 
 
 exiftool "-filename<DateTimeOriginal" -d "renaming_##%Y%m%d%H%M%S##.%%e" $workdir/*.jpg
-exiftool "-filename<DateTimeOriginal" -d "duplicate_##%Y%m%d%H%M%S##%%-c.%%e" $workdir/IMG*.jpg
+
+if test -n "$(find ${workdir} -maxdepth 1 -name 'IMG*.jpg' -print -quit)"; then
+    exiftool "-filename<DateTimeOriginal" -d "duplicate_%Y%m%d%H%M%S%%-c.%%e" $workdir/IMG*.jpg
+fi
 
 countjpg=$((`find ${workdir} -maxdepth 1 -type f -name *.jpg | wc -l`))
 
