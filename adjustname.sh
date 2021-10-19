@@ -13,6 +13,11 @@ if test -n "$(find ${workdir} -maxdepth 1 -name '*.MOV' -print -quit)"; then
     rename 's/(.*)\.movie$/$1.mov/' ${workdir}*.movie
 fi
 
+if test -n "$(find ${workdir} -maxdepth 1 -name '*.MP4' -print -quit)"; then
+    rename 's/(.*)\.MP4$/$1.mp4x/' ${workdir}*.MP4
+    rename 's/(.*)\.mp4x$/$1.mp4/' ${workdir}*.mp4x
+fi
+
 
 exiftool "-filename<DateTimeOriginal" -d "renaming_##%Y%m%d%H%M%S##.%%e" $workdir/*.jpg
 
@@ -41,11 +46,18 @@ if test -n "$(find ${workdir} -maxdepth 1 -name 'IMG*.jpg' -print -quit)"; then
     done    
 fi
 
+i=1
 
 if test -n "$(find ${workdir} -maxdepth 1 -name '*.mov' -print -quit)"; then
-    i=1
     for mov in `ls ${workdir}*.mov`; do
         mv $mov `printf "${workdir}${album}_m%02d.mov" $i`
+        ((i=i+1))
+    done    
+fi
+
+if test -n "$(find ${workdir} -maxdepth 1 -name '*.mp4' -print -quit)"; then
+    for mov in `ls ${workdir}*.mp4`; do
+        mv $mov `printf "${workdir}${album}_m%02d.mp4" $i`
         ((i=i+1))
     done    
 fi
