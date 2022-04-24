@@ -4,18 +4,18 @@ album=`basename $1`
 workdir=$1
 
 if test -n "$(find ${workdir} -maxdepth 1 -name '*.JPG' -print -quit)"; then
-    rename 's/(.*)\.JPG$/$1.jpeg/' ${workdir}*.JPG
-    rename 's/(.*)\.jpeg$/$1.jpg/' ${workdir}*.jpeg
+    rename .JPG .jpeg ${workdir}*.JPG
+    rename .jpeg .jpg ${workdir}*.jpeg
 fi
 
 if test -n "$(find ${workdir} -maxdepth 1 -name '*.MOV' -print -quit)"; then
-    rename 's/(.*)\.MOV$/$1.movie/' ${workdir}*.MOV
-    rename 's/(.*)\.movie$/$1.mov/' ${workdir}*.movie
+    rename .MOV .movie ${workdir}*.MOV
+    rename .movie .mov ${workdir}*.movie
 fi
 
 if test -n "$(find ${workdir} -maxdepth 1 -name '*.MP4' -print -quit)"; then
-    rename 's/(.*)\.MP4$/$1.mp4x/' ${workdir}*.MP4
-    rename 's/(.*)\.mp4x$/$1.mp4/' ${workdir}*.mp4x
+    rename .MP4 .mp4x ${workdir}*.MP4
+    rename .mp4x .mp4s ${workdir}*.mp4x
 fi
 
 
