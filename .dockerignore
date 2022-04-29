@@ -2,3 +2,4 @@ test/
 .gitignore
 fotos.code-workspace    
 Dockerfile
+README.md
