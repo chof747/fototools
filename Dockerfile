@@ -4,7 +4,9 @@ RUN apk add exiftool
 RUN apk add bash
 RUN apk add util-linux
 
+ENV FOTOS_PATH=/fotos
+
 WORKDIR /usr/src/app
 
 COPY . ./
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+CMD ["/usr/src/app/execute-search.sh"]
