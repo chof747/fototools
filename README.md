@@ -8,6 +8,22 @@ The container provides a renaming service for a foto livrary stored on a NAS or 
 docker build -t fotomaintainance:latest .
 ```
 
+### Preparation of host environment
+
+- Add share on NAS containing folders to be mounted on a mountpoint
+  1. create the mount point (e.g. /mnt/images)
+  2. add mounting the images directories to the mountpoint in the `/etc/fstab` file. E.g:
+  ```
+      <IP to NAS>:/<path to images>       <mountpoint>      nfs     defaults        0       0
+  ```
+  3. If you want to run the task periodically add the line for the execution below to your `/etc/crontab` and use the user you specified when executing on the command line
+  
+## Checking the container and shakedown testing
+
+```console
+docker run --name test_fotomaintainance -it --entrypoint /bin/sh --volume /mnt/fotos:/fotos fotomaintainance:latest && docker rm test_fotomaintainance
+```
+
 ## Execution of docker container
 
 ```console
