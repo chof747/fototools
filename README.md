@@ -8,6 +8,8 @@ The container provides a renaming service for a foto livrary stored on a NAS or 
 docker build -t fotomaintainance:latest .
 ```
 
+or us the available `update.sh` script in the main directory
+
 ### Preparation of host environment
 
 - Add share on NAS containing folders to be mounted on a mountpoint
@@ -17,7 +19,7 @@ docker build -t fotomaintainance:latest .
       <IP to NAS>:/<path to images>       <mountpoint>      nfs     defaults        0       0
   ```
   3. If you want to run the task periodically add the line for the execution below to your `/etc/crontab` and use the user you specified when executing on the command line
-  
+
 ## Checking the container and shakedown testing
 
 ```console
