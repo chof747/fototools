@@ -8,6 +8,10 @@ if test -n "$(find ${workdir} -maxdepth 1 -name '*.JPG' -print -quit)"; then
     rename .jpeg .jpg ${workdir}*.jpeg
 fi
 
+if test -n "$(find ${workdir} -maxdepth 1 -name '*.jpeg' -print -quit)"; then
+    rename .jpeg .jpg ${workdir}*.jpeg
+fi
+
 if test -n "$(find ${workdir} -maxdepth 1 -name '*.MOV' -print -quit)"; then
     rename .MOV .movie ${workdir}*.MOV
     rename .movie .mov ${workdir}*.movie
